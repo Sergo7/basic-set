@@ -2,3 +2,5 @@ node_modules
 .vscode
 app/.idea
 .idea
+package.json
+package-lock.json
