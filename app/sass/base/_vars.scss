@@ -1,0 +1,18 @@
+$base-font-sans-serif: 'Circular Std Book', 'Arial', 'Helvetica', sans-serif;
+
+// This is the default html and body font-size for the base rem value.
+$rem-base: 16px;
+
+
+$base-min-width: 320px;
+$base-max-width: 1200px;
+
+// Headers
+$h1-font-size: 24px !default;
+$h2-font-size: 22px !default;
+$h3-font-size: 20px !default;
+$h4-font-size: 18px !default;
+$h5-font-size: 16px !default;
+$h6-font-size: 14px !default;
+
+$anim-speed: 0.3s;

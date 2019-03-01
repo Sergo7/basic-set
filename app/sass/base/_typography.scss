@@ -1,0 +1,81 @@
+// Typography
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6,
+.h {
+  font-weight: 300;
+  margin: 0 0 0.5em;
+}
+
+h1, .h1 {
+  font-size: $h1-font-size;
+  @include media('>=desktop') {
+    font-size: 40px;
+    margin: 0 0 84px;
+  }
+}
+
+h2, .h2 {
+  font-size: $h2-font-size;
+  @include media('>=desktop') {
+    font-size: 30px;
+    margin: 0 0 21px;
+  }
+}
+
+h3, .h3 {
+  font-size: $h3-font-size;
+}
+
+h4, .h4 {
+  font-size: $h4-font-size;
+  @include media('>=desktop') {
+    font-size: 18px;
+    margin: 0 0 29px;
+  }
+}
+
+h5, .h5 {
+  font-size: $h5-font-size;
+  @include media('>=desktop') {
+    font-size: 16px;
+    margin: 0 0 35px;
+  }
+}
+
+h6, .h6 {
+  font-size: $h6-font-size;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  text-decoration: none;
+  transition: color $anim-speed, background $anim-speed;
+  outline: none;
+  &:hover {
+
+  }
+}
+
+strong {
+  font-weight: 500;
+}
+
+blockquote {
+  font-size: 18px;
+  font-style: italic;
+  background: #fbe7d1;
+  margin: 0;
+  padding: 20px 39px;
+  letter-spacing: -0.5px;
+  p {
+    margin: 0;
+  }
+}

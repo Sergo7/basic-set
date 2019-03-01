@@ -1,0 +1,146 @@
+// list reset
+%listreset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// clearfix
+%clearfix {
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+%relative {
+  position: relative;
+}
+
+.clearfix {
+  @extend %clearfix;
+}
+.relative {
+  @extend %relative;
+}
+
+
+// transition
+%transition {
+  transition: all 0.3s ease-in-out;
+}
+
+// justify nav
+%justify {
+  text-align: justify;
+  font-size: 1px;
+  line-height: 0px;
+  > * {
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+  }
+  &:after {
+    content: '';
+    width: 100%;
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+
+/// * Helper class to truncate and add ellipsis to a string too long for it to fit
+/// * on a single line.
+/// * 1. Prevent content from wrapping, forcing it on a single line.
+/// * 2. Add ellipsis at the end of the line.
+
+.ellipsis {
+  white-space: nowrap; /* 1 */
+  text-overflow: ellipsis; /* 2 */
+  overflow: hidden;
+}
+
+@mixin push--auto {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+@mixin responsive-ratio($x,$y, $pseudo: false) {
+  $padding: unquote( ( $y / $x ) * 100 + '%' );
+  @if $pseudo {
+    &:before {
+      @include pseudo($pos: relative);
+      width: 100%;
+      padding-top: $padding;
+    }
+  } @else {
+    padding-top: $padding;
+  }
+}
+
+//div {
+//  @include responsive-ratio(16,9);
+//}
+
+
+@mixin css-triangle($color, $direction, $size: 6px, $position: absolute, $round: false){
+  @include pseudo($pos: $position);
+  width: 0;
+  height: 0;
+  @if $round {
+    border-radius: 3px;
+  }
+  @if $direction == down {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-top: $size solid $color;
+    margin-top: 0 - round( $size / 2.5 );
+  } @else if $direction == up {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-bottom: $size solid $color;
+    margin-bottom: 0 - round( $size / 2.5 );
+  } @else if $direction == right {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+    margin-right: -$size;
+  } @else if  $direction == left {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;
+    margin-left: -$size;
+  }
+}
+
+@mixin font-source-sans($size: false, $colour: false, $weight: false,  $lh: false) {
+  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+  @if $size { font-size: $size; }
+  @if $colour { color: $colour; }
+  @if $weight { font-weight: $weight; }
+  @if $lh { line-height: $lh; }
+}
+
+@mixin input-placeholder {
+  &.placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+  &::-webkit-input-placeholder { @content; }
+}
+
+@mixin truncate($truncation-boundary) {
+  max-width: $truncation-boundary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
